@@ -1,0 +1,2 @@
+# Preserve upstream license formatting without treating CRLF/spaces as code errors.
+static/fonts/*-OFL.txt -whitespace
