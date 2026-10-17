@@ -62,16 +62,18 @@ Open **Models & narration**, preview the exact explanation payload, select a pro
 
 For narration, enable external processing, configure ElevenLabs, opt in, then press the current step's listen button. Native audio controls support pause/resume. The transcript remains readable without audio. Navigation and level changes stop old audio and highlight the new step; synchronization is at segment boundaries, not word timestamps. Audio is cached locally. Local/offline narration is not implemented.
 
+## Development context
+
+Start new development chats with [AGENTS.md](AGENTS.md), [wiki index](docs/index.md) and [current state](docs/project-state.md). Use the [five chat starters](docs/chat-starters.md) for focused work. Shared conclusions travel through committed files/worktree revisions, not assumed chat history.
+
 ## Checks
 
 ```sh
-npm run check
-npm run format:check
-npm test
-npm run build
 npx playwright install chromium
-npm run test:e2e
+npm run verify
 ```
+
+For documentation-only work, run `npm run verify:docs` and review the affected factual claims against current source. [Engineering](docs/engineering.md#verification) explains check scopes, CI and limitations. There is no separate lint command.
 
 Browser tests start their own production server and need a current build. They use temporary external data directories, simulated speech, and no real API keys. See [validation](docs/validation.md) for results and accuracy review; a passing structural check does not establish factual correctness.
 

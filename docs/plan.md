@@ -142,3 +142,22 @@ Constraints: retain local project data, credentials, build outputs and test arti
 Acceptance: inspect staged diff and checks, create initial commit, push main, and verify matching local/remote commit and clean worktree.
 
 Publication readiness: remote was confirmed empty; initial staged diff reviewed. Credentials, local project data, browser downloads, builds and test artifacts are excluded. Upstream font licenses retain their original formatting. Final checks: 18 core/module tests, 12 browser tests, production build, zero-error/zero-warning type checks and formatting pass. Browser coverage includes highlight aspect-ratio alignment, light/dark rendering and narrow layouts.
+
+## Preview natural sizing — 2026-10-17
+
+Goal: remove the internal preview scrollbar without hiding content.
+Context: fixed canvas/anchor heights and `overflow-y: auto` caused a nested scroll region around the connected preview.
+Constraints: retain image/highlight alignment, all capture controls, pan/zoom and responsive light/dark layouts.
+Acceptance: intrinsic canvas/anchor heights accommodate the preview and expanded connection controls; no nested scrollbar or clipped anchor at default zoom; light/dark desktop/mobile regression checks pass.
+
+Result: removed the preview's scroll container and fixed percentage heights, allowing the sheet to grow from its content. Preserved image/overlay sizing and a dedicated height for the optional technical graph. Type checks and build pass; all 12 browser tests pass, including expanded preview controls in light/dark at 1280 × 720 and 390 × 844 with no nested scrolling, clipping or horizontal page overflow. Screenshot inspected and Git diff reviewed.
+
+## Shared development context — 2026-10-17
+
+Goal: establish proportionate shared guidance, a lightweight developer wiki and repeatable verification without expanding runtime product scope.
+Context: Codex guidance and the installed Matt Pocock 1.3.1 plugin; existing architecture/docs and the unrelated uncommitted preview-sizing fix are preserved.
+Constraints: one authority per topic; original sources/private data remain intact; no personal config changes, extra plugins, custom skills, automatic chats or schedules. Developer wiki is committed context; product-generated knowledge remains outside targets.
+Checkpoints: inspect current source and plugin evidence; revise concise AGENTS and topic navigation/state/engineering; add five starter prompts and local documentation checks/full verification/CI; review docs/diff and exercise the new commands.
+Acceptance: new chats have explicit startup and handoff paths, current facts and gaps cite source/verification, skills are selectively routed and verified, docs navigation passes, and CI uses the same working verification command. Hosted CI is unverified until pushed and executed.
+
+Result: concise startup/maintenance guidance, a linked developer index/current-state handoff/engineering reference, five focused starter prompts, a structural docs checker, aggregate verification and a read-only CI job are implemented. Existing topic docs were reused and developer/product wiki scopes clarified. Installed Matt Pocock marketplace/plugin verified without installation or personal-config edits. `npm run verify` passed all local checks (18 module + 12 browser tests); negative docs navigation cases were rejected. Final documents and Git diff reviewed; unrelated preview-sizing work preserved. Hosted CI remains unverified until this workflow is committed, pushed and run. The next recommended product decision is the scope/success criteria for a real-user screen-to-source comprehension study, still a proposal.

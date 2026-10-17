@@ -10,6 +10,7 @@ test('sample journey, evidence, depth, persistence and mobile layout', async ({ 
   await expect(page.locator('.svelte-flow__node')).toHaveCount(0);
   await page.getByRole('button', { name: 'View connections' }).click();
   await expect(page.locator('.svelte-flow__node')).toHaveCount(4);
+  expect((await page.locator('.visual-stage').boundingBox())!.height).toBeGreaterThan(300);
   await page.getByRole('button', { name: 'Back to the scene' }).click();
   await expect(page.locator('.code-block')).toHaveCount(0);
   await page.getByRole('button', { name: 'View source' }).click();

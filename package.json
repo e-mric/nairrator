@@ -15,7 +15,10 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "check:docs": "node scripts/check-docs.mjs",
+    "verify:docs": "npm run check:docs && npm run format:check",
+    "verify": "npm run verify:docs && npm run check && npm test && npm run build && npm run test:e2e"
   },
   "dependencies": {
     "@xyflow/svelte": "1.7.0",

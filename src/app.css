@@ -1767,7 +1767,7 @@ select option {
 .canvas-viewport {
   overflow: hidden;
   min-height: 470px;
-  height: min(62vh, 720px);
+  height: auto;
   cursor: grab;
   touch-action: pan-y;
 }
@@ -1775,8 +1775,8 @@ select option {
   cursor: grabbing;
 }
 .canvas-sheet .scene-content {
-  height: 100%;
-  min-height: 0;
+  height: auto;
+  min-height: min(62vh, 720px);
   align-items: center;
   grid-template-columns: minmax(0, 1.3fr) minmax(280px, 1fr);
   gap: 80px;
@@ -1785,14 +1785,14 @@ select option {
 }
 .canvas-sheet .visual-stage,
 .canvas-sheet .scene-content:has(.original-screen) .visual-stage {
-  height: 100%;
+  height: auto;
   min-height: 0;
   border: 0;
 }
 .canvas-sheet .interface-stage,
 .canvas-sheet .interface-stage.original-screen {
   width: 100%;
-  height: 100%;
+  height: auto;
   max-width: none;
   padding: 45px 20px;
   margin: 0;
@@ -2118,9 +2118,8 @@ select option {
   color: var(--muted);
   margin-top: 10px;
 }
-.canvas-sheet .interface-stage,
-.canvas-sheet .interface-stage.original-screen {
-  overflow-y: auto;
+.canvas-sheet .interface-stage > * {
+  flex-shrink: 0;
 }
 @media (max-width: 720px) {
   .canvas-sheet .visual-stage,
@@ -2148,4 +2147,9 @@ select option {
 }
 .screenshot-fallback summary::-webkit-details-marker {
   display: none;
+}
+
+/* The optional graph needs a viewport; the interface preview uses intrinsic height. */
+.canvas-sheet .visual-stage:has(.svelte-flow) {
+  height: 410px;
 }

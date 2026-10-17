@@ -4,15 +4,11 @@ Accepted: 2026-10-16. These supplement the product brief in [PRD.md](PRD.md). Th
 
 ## Development
 
-Use Codex best practices as the development foundation, with the practical workflow maintained in [AGENTS.md](../AGENTS.md). Apply relevant Matt Pocock skills selectively after reading each selected skill; avoid imposing every skill or workflow on every task.
-
-Explicit project requirements take precedence over reference guidance and skill recommendations. Identify conflicts and choose the simplest approach that satisfies the task. Keep each instruction in one authoritative location and link to it elsewhere.
-
-Current source evidence takes precedence when describing implementation. The PRD describes intended behavior. Generated knowledge is a derived interpretation, never an independent authority. If implementation and PRD differ, report the discrepancy with references to both rather than presenting intent as implemented behavior.
-
-Matt Pocock skills are development tooling, never runtime dependencies. On 2026-10-16, installed version 1.3.1 was verified by reading writing-for-agents, codebase-design, and domain-modeling under the local Codex plugin cache. The catalog also exposes diagnosing-bugs, tdd, and code-review. No installation was necessary. If absent in a future environment, try `codex plugin marketplace add mattpocock/skills`, then `codex plugin add mattpocock-skills@mattpocock`; verify availability and report unsupported CLI commands honestly.
+Development rules are maintained in [AGENTS.md](../AGENTS.md), with [engineering](engineering.md) covering feature ownership, verification and selectively applied skills. Start shared-context navigation at [index](index.md); current capability and handoff live in [project state](project-state.md). Current source evidence describes implementation; the PRD describes intent. Preserve discrepancies with references to both, rather than treating generated prose as authority.
 
 ## Persistent knowledge
+
+Two distinct stores: the committed developer wiki in `docs/` shares this project's context across chats, following [index conventions](index.md#page-conventions-and-maintenance). The requirements below concern the product's derived knowledge about selected target repositories; its data remains outside those targets. The developer wiki does not implement the future product knowledge layer.
 
 - Read selected files and documents without modifying them; persist source-linked explanations. Derive interlinked Markdown pages when an accumulated wiki is justified.
 - Define conventions in a schema. Start with JSON and saved tour explanations; add Markdown pages, an index, and a chronological log when persistent cross-session knowledge justifies them (latest PRD supersedes the earlier immediate-wiki wording).
@@ -29,7 +25,7 @@ Introduce incremental ingestion and source-referenced answers with the core jour
 
 ## Reference guidance
 
-Read before planning on 2026-10-16:
+Reference guidance reviewed on 2026-10-16; Codex guide and installed skills rechecked on 2026-10-17 (see [engineering](engineering.md#reference-guidance-and-decisions)):
 
 - [OpenAI best practices](https://learn.chatgpt.com/guides/best-practices): use clear task context, practical repository guidance, incremental work, verification, and review.
 - [Karpathy LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f): adapt immutable sources, accumulated Markdown knowledge, schema, ingest/query/maintenance workflows, index, and log.

@@ -227,6 +227,36 @@ test('local preview captures automatically and keeps a chosen feature highlighte
     await expect(page.getByLabel('Highlighted feature: Search')).toBeVisible();
     await page.setViewportSize({ width: 1440, height: 1100 });
     await page.screenshot({ path: 'test-results/local-preview-highlight.png', fullPage: true });
+    // A connected preview, including expanded controls, must fit without a nested scroll area.
+    await page.getByRole('button', { name: 'Preview address', exact: true }).click();
+    for (const theme of ['light', 'dark'] as const) {
+      const toggle = page.getByRole('button', { name: `Switch to ${theme} theme`, exact: true });
+      if (await toggle.count()) await toggle.click();
+      for (const size of [
+        { width: 1280, height: 720 },
+        { width: 390, height: 844 },
+      ]) {
+        await page.setViewportSize(size);
+        const layout = await page.locator('.interface-stage').evaluate((element) => {
+          const canvas = element.closest('.canvas-viewport')!.getBoundingClientRect();
+          const bounds = element.getBoundingClientRect();
+          return {
+            overflow: getComputedStyle(element).overflowY,
+            excess: element.scrollHeight - element.clientHeight,
+            clipped: bounds.bottom > canvas.bottom + 1 || bounds.top < canvas.top - 1,
+          };
+        });
+        expect(layout.overflow).not.toBe('auto');
+        expect(layout.overflow).not.toBe('scroll');
+        expect(layout.excess).toBeLessThanOrEqual(1);
+        expect(layout.clipped).toBe(false);
+        expect(
+          await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
+        ).toBe(true);
+      }
+    }
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.screenshot({ path: 'test-results/preview-natural-fit.png', fullPage: true });
     await page.reload();
     await expect(page.locator('.captured-interface img')).toBeVisible({ timeout: 15000 });
     await page.getByRole('button', { name: 'Preview address', exact: true }).click();

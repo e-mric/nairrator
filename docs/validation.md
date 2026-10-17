@@ -1,5 +1,7 @@
 # Validation — first vertical slice
 
+Dated sections are historical evidence. See [project state](project-state.md) for the current milestone and latest verification scope.
+
 2026-10-16. This report describes implemented behavior, not completion of the entire PRD.
 
 ## Automated checks
@@ -79,3 +81,13 @@ Production build and type checks pass; 11 browser tests pass, covering screen co
 ## Running-preview capture — 2026-10-16
 
 18 core/module tests and 12 production-browser tests pass. New coverage exercises real isolated browser capture, source-bound unique control matching, ambiguity, URL policy, rejection of redirects and cross-origin/write requests, feature selection through deeper layers, refresh, automatic address reconnect, disconnect and invalid-address recovery. Build, type checks and formatting pass. Chromium is available on this development host; fresh installations must run the documented installer. Captures do not share the user's browser session and may be incomplete when the app requires blocked requests. Source-to-feature relationships remain inferred; the selected feature is visual context and does not rebuild the source tour. Git was initialized for the requested initial publication; staged changes are reviewed before committing.
+
+## Natural preview sizing — 2026-10-17
+
+All 12 production-browser tests pass; production build and zero-error/zero-warning type checks pass. Regression coverage verifies that the connected preview and expanded controls fit inside the canvas without an internal scroll container, content clipping or horizontal overflow in light/dark desktop/mobile layouts. The optional graph retains a usable viewport, and screenshot/highlight aspect-ratio coverage remains passing. Finished layout screenshot inspected and Git diff reviewed.
+
+## Shared workflow verification — 2026-10-17
+
+`npm run verify` passed end to end on the current working tree (`326544e` baseline plus the preserved sizing fix and workflow setup): 13 documentation files checked for local references/anchors/index coverage, formatting passed, Svelte/TypeScript reported zero errors/warnings, 18 core/module tests passed, production build succeeded and all 12 browser tests passed. A temporary negative probe confirmed the documentation checker rejects a broken path, missing heading and unindexed topic; the probe was removed. Source-fact review was performed separately against owning source modules and current configuration. These structural results do not prove factual correctness.
+
+`codex plugin marketplace list` and filtered plugin listing confirmed mattpocock and enabled mattpocock-skills 1.3.1; selected skill files were inspected. No plugin installation, personal config change, chat creation, custom skill or schedule was added. The GitHub Actions job uses Node 24 and verified pinned v6 checkout/setup-node revisions, installs Chromium/system dependencies, and runs the same verification command. Its YAML was format-checked and manually reviewed; no hosted execution is claimed. Provider tests remain mocked contracts, preview tests real local integrations, narration browser tests simulated audio. Live models/speech, structured user comprehension testing and a full accessibility/platform audit remain unverified. Existing uncommitted preview-sizing changes were preserved; final Git diff and new files were reviewed.

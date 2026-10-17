@@ -1,5 +1,7 @@
 # Knowledge schema — version 1 (design contract)
 
+Scope: the product’s future generated knowledge about target projects. The separate committed developer wiki uses [index conventions](index.md#page-conventions-and-maintenance); it does not require this JSON/frontmatter framework.
+
 This is a future accumulated-knowledge design, not a prerequisite for the first slice. The latest [PRD](PRD.md) calls for JSON and saved tour explanations first; add wiki pages, index, and log only when cross-session needs justify them. The current implementation stores one active analysis and tours in `workspace.json`, plus cached audio. This document is not an executable validator.
 
 ## Location and ownership
